@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types';
 
-function fetchDataImage(name, page) {
-  const KEY = '26842209-8060593a7142b471474d704cf';
-  return fetch(
-    `https://pixabay.com/api/?key=${KEY}&q=${name}&image_type=photo&pretty=true&per_page=12&page=${page}`
-  ).then(r => {
-    if (r.ok) {
-      return r.json();
-    }
-    return Promise.reject(new Error(`Error: ${r.status} ${r.statusText}`));
-  })
+function fetchDataImage() {
+  fetch(
+    `https://api.themoviedb.org/3/trending/all/day?api_key=946fd192c485f6dbf39faf2135c337c0
+    `
+  )
+    .then(r => {
+      if (r.ok) {
+        return r.json();
+      }
+      return Promise.reject(new Error(`Error: ${r.status} ${r.statusText}`));
+    })
+    .then(data => console.log(data));
 }
 
 fetchDataImage.propTypes = {
