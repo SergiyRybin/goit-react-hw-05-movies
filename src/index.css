@@ -1,6 +1,5 @@
 @import-normalize; /* bring in normalize.css styles */
 
-
 html {
   box-sizing: border-box;
   width: 100vw;
@@ -27,4 +26,16 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.link {
+  padding-right: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.active {
+  padding-right: 10px;
+  text-decoration: none;
+  color: aqua;
 }

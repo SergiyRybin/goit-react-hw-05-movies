@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 function fetchDataImage() {
-  fetch(
+ return fetch(
     `https://api.themoviedb.org/3/trending/all/day?api_key=946fd192c485f6dbf39faf2135c337c0
     `
   )
@@ -11,7 +11,7 @@ function fetchDataImage() {
       }
       return Promise.reject(new Error(`Error: ${r.status} ${r.statusText}`));
     })
-    .then(data => console.log(data));
+    
 }
 
 fetchDataImage.propTypes = {
