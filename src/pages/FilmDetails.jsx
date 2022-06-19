@@ -6,40 +6,29 @@ import Container from 'components/Container/Container';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
- const FilmDetails = () => {
+const FilmDetails = () => {
   const [filmDetail, setFilmDetail] = useState([]);
-
-  // const INITIAL_DATA = {
-  //   id: 1,
-  //   poster_path: '',
-  //   original_title: "YTne",
-  //   overview: "ytn"
-
-  // }
-
   const id = useParams();
+  const quary = useParams()
+  console.log(quary)
 
   if (filmDetail.length === 0) {
-  fetchById(id.id)
-    .then(data => {
-      if (data) {
-        return setFilmDetail(data);
-      }
-      // return setFilmDetail(INITIAL_DATA)
-    })
-    .catch(() => {
-      return toast('Немає даних');
-
-      // console.log(error)
-      // setError(error)
-    });
+    fetchById(id.id)
+      .then(data => {
+        if (data) {
+          return setFilmDetail(data);
+        }
+      })
+      .catch(() => {
+        return toast('Немає даних');
+      });
   }
 
   const genres = filmDetail.genres;
 
   return (
     <Container>
-      <NavLink to="/" key="GoBack">
+      <NavLink to="/movies/query/:query" key="GoBack">
         <button style={{ marginBottom: 10 }}>Go back</button>
       </NavLink>
       <div style={{ display: 'flex' }} key={filmDetail.id}>
@@ -48,7 +37,6 @@ import 'react-toastify/dist/ReactToastify.css';
             width={250}
             src={`https://image.tmdb.org/t/p/w500/${filmDetail.poster_path}`}
             alt={filmDetail.original_title}
-            // className={s.ImageItem}
           />
         )}
 
@@ -103,4 +91,4 @@ import 'react-toastify/dist/ReactToastify.css';
   );
 };
 
-export default FilmDetails
+export default FilmDetails;

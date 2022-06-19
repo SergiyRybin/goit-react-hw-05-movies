@@ -16,6 +16,7 @@ const Home = () => {
 
   return (
     <Container>
+      <h1>Trending today</h1>
       <FilmList data={data} />
     </Container>
   );
