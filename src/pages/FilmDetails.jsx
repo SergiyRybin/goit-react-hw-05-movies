@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchById } from 'servises/fetchRequaest';
 import { useState } from 'react';
 import Container from 'components/Container/Container';
@@ -7,10 +7,11 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const FilmDetails = () => {
+  const loc = useLocation();
+
   const [filmDetail, setFilmDetail] = useState([]);
   const id = useParams();
-  const quary = useParams()
-  console.log(quary)
+  
 
   if (filmDetail.length === 0) {
     fetchById(id.id)
@@ -28,7 +29,8 @@ const FilmDetails = () => {
 
   return (
     <Container>
-      <NavLink to="/movies/query/:query" key="GoBack">
+      <NavLink to={`/movies${loc.state}`} >
+      {/* <NavLink to="/movies/query/:query" key="GoBack"> */}
         <button style={{ marginBottom: 10 }}>Go back</button>
       </NavLink>
       <div style={{ display: 'flex' }} key={filmDetail.id}>

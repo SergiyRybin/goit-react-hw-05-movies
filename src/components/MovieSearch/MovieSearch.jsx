@@ -5,16 +5,16 @@ import Container from 'components/Container/Container';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const MovieSearch = () => {
-  const q = useParams();
-  console.log(q)
-  const query = q.query.slice(6, q.query.length);
+  const location = useLocation();
+
+  const query = location.search.slice(7, location.search.length);
   const [filmsSearch, setFilmSearch] = useState([]);
 
   useEffect(() => {
-    if (q) {
+    if (query) {
       fetchQuery(query).then(({ results }) => {
         if (results.length === 0) {
           return toast('Немає фільма за таким запитом');
@@ -22,13 +22,13 @@ const MovieSearch = () => {
         setFilmSearch({ results });
       });
     }
-  }, [q, query]);
+  }, [query]);
 
   const data = filmsSearch.results;
   return (
     <>
       <Container>
-        <FilmList data={data} />
+        <FilmList data={data} state={location.search} />
       </Container>
     </>
   );

@@ -22,8 +22,10 @@ const App = () => {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/movies/" element={<MoviesBar />} />
-            <Route path="/movies/query/:query" element={<MovieSearch />} />
+            <Route path="/movies" element={<MoviesBar />}>
+              <Route index element={<MovieSearch/>} />
+            </Route>
+
             <Route path="/movies/:id" element={<FilmDetails />}>
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Reviews />} />

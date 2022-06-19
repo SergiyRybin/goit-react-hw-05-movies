@@ -1,9 +1,11 @@
 import s from '../FilmCard/FilmCard.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const FilmCard = ({ film }) => {
+  const location = useLocation();
+  // console.log(location);
   return (
-    <Link to={`/movies/${film.id}`}>
+    <Link to={`/movies/${film.id}`} state={location.search}>
       <img
         src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
         alt=""

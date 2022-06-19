@@ -1,35 +1,32 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
 
 const MoviesBar = () => {
-  const query = useParams();
-  console.log(query)
-  
-  const [film, setFilm] = useState('');
-  const fromCahnge = e => {
-    const nameValue = e.currentTarget.value.toLowerCase().trim();
+  const [, setSearchFilm] = useSearchParams();
+  const l = useLocation();
 
-    setFilm(nameValue);
+  const fromCahnge = e => {
+    e.preventDefault();
+    const nameValue = e.currentTarget.elements.query.value.toLowerCase().trim();
+    setSearchFilm({ query: nameValue });
   };
+
   return (
     <>
       <header>
-        <form>
+        <form onSubmit={fromCahnge}>
           <input
-            onChange={fromCahnge}
             type="text"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
+            name="query"
           />
-          <NavLink to={`/movies/query/:query=${film}`}>
-            <button type="submit">
-              <span>Search</span>
-            </button>
-          </NavLink>
+          {/* <NavLink to={`/movies${l.search}`} state={{ l }}> */}
+          <button type="submit">Search</button>
+          {/* </NavLink> */}
         </form>
       </header>
+      <Outlet state={{ l }} />
     </>
   );
 };
