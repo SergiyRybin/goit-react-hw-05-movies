@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/459.cc6b8e97.chunk.css","mappings":"AAAA,kBAEE,mBAAoB,CACpB,cAAe,CACf,QAAS,CAHT,eAIF","sources":["pages/Cast/Cast.module.css"],"sourcesContent":[".Cast {\n  list-style: none;\n  display: inline-flex;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n"],"names":[],"sourceRoot":""}
