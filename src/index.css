@@ -34,8 +34,18 @@ img {
   color: #fff;
 }
 
-.active {
-  padding-right: 10px;
-  text-decoration: none;
+.link.active {
   color: aqua;
+}
+
+.linkDetail{
+  text-decoration: none;
+  color: #3f3f3f;
+}
+
+
+.linkDetail.activeDetails{
+  color: green;
+  font-weight: bold;
+  font-size: larger;
 }

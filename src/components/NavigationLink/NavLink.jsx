@@ -5,13 +5,13 @@ const Navigatinon = () => {
     <nav>
       <NavLink
         to="/"
-        className={({isActive}) => (isActive ? 'active' : 'link')}
+        className={({isActive}) => (isActive ? 'link active' : 'link')}
       >
         Home
       </NavLink>
       <NavLink
         to="/movies"
-        className={({isActive})=> (isActive ? 'active' : 'link')}
+        className={({isActive})=> (isActive ? 'link active' : 'link')}
       >
         Movies
       </NavLink>
