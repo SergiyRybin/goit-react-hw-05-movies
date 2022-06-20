@@ -2,7 +2,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import React from 'react';
 import Container from 'components/Container/Container';
 import NavBar from 'components/NavigationBar/NavBar';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import { ToastContainer } from 'react-toastify';
 import { lazy, Suspense } from 'react';
@@ -15,6 +15,8 @@ const Cast = lazy(() => import('pages/Cast/Cast'));
 const Reviews = lazy(() => import('pages/Reviews/Reviews'));
 
 const App = () => {
+  const location = useLocation();
+ 
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -22,8 +24,8 @@ const App = () => {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/movies" element={<MoviesBar />}>
-              <Route index element={<MovieSearch/>} />
+            <Route path="/movies" element={location.search ? <MovieSearch/> : <MoviesBar />}>
+              {/* <Route index element={<MovieSearch/>} /> */}
             </Route>
 
             <Route path="/movies/:id" element={<FilmDetails />}>

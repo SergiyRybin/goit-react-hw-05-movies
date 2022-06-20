@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const FilmCard = ({ film }) => {
   const location = useLocation();
-  // console.log(location);
+
   return (
     <Link to={`/movies/${film.id}`} state={location.search}>
       <img
