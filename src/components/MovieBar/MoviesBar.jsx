@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 
 const MoviesBar = () => {
   const [, setSearchFilm] = useSearchParams();
