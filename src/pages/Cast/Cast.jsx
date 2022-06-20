@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchByIdCast } from 'servises/fetchRequaest';
-import iconNmae from 'servises/1.jpeg';
+import iconNmae from 'images/1.jpeg'
 import s from '../Cast/Cast.module.css';
 
  const Cast = () => {

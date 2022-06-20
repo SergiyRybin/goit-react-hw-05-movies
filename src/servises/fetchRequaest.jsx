@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const fetchTrendFilm = () => {
   return fetch(
@@ -12,7 +12,7 @@ export const fetchTrendFilm = () => {
   });
 };
 
-export const fetchQuery = (query) => {
+export const fetchQuery = query => {
   return fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=946fd192c485f6dbf39faf2135c337c0&language=en-US&query=${query}&page=1&include_adult=false
     `
@@ -24,7 +24,7 @@ export const fetchQuery = (query) => {
   });
 };
 
-export const fetchById = (id) => {
+export const fetchById = id => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=946fd192c485f6dbf39faf2135c337c0&language=en-US
     `
@@ -36,7 +36,7 @@ export const fetchById = (id) => {
   });
 };
 
-export const fetchByIdCast = (id) => {
+export const fetchByIdCast = id => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=946fd192c485f6dbf39faf2135c337c0
     `
@@ -48,7 +48,7 @@ export const fetchByIdCast = (id) => {
   });
 };
 
-export const fetchByIdreviews = (id) => {
+export const fetchByIdreviews = id => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=946fd192c485f6dbf39faf2135c337c0
     `
@@ -60,13 +60,13 @@ export const fetchByIdreviews = (id) => {
   });
 };
 
+fetchQuery.propTypes = {
+  query: PropTypes.string.isRequired,
+};
 
-
-
-
-// fetchDataImage.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   page: PropTypes.string.isRequired,
-// };
-
-// export default fetchDataImage;
+fetchByIdCast.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+fetchByIdreviews.propTypes = {
+  id: PropTypes.number.isRequired,
+};

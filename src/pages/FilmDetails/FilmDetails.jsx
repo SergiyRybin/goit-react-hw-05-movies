@@ -2,6 +2,8 @@ import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchById } from 'servises/fetchRequaest';
 import { useState } from 'react';
 import Container from 'components/Container/Container';
+import s from 'pages/FilmDetails/FilmDetails.module.css';
+import iconNmae from 'images/1.jpeg';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,8 +12,17 @@ const FilmDetails = () => {
   const loc = useLocation();
 
   const [filmDetail, setFilmDetail] = useState([]);
+
   const id = useParams();
-  
+
+  const noDataRender = {
+    original_title: 'No information',
+    id: 1,
+    poster_path: iconNmae,
+    popularity: 0,
+    overview: 'No information',
+    genres: [{ name: 'No information' }],
+  };
 
   if (filmDetail.length === 0) {
     fetchById(id.id)
@@ -21,6 +32,7 @@ const FilmDetails = () => {
         }
       })
       .catch(() => {
+        setFilmDetail(noDataRender);
         return toast('Немає даних');
       });
   }
@@ -29,18 +41,21 @@ const FilmDetails = () => {
 
   return (
     <Container>
-      <NavLink to={`/movies${loc.state}`} >
-      {/* <NavLink to="/movies/query/:query" key="GoBack"> */}
+      <NavLink to={`/movies${loc.state}`}>
         <button style={{ marginBottom: 10 }}>Go back</button>
       </NavLink>
       <div style={{ display: 'flex' }} key={filmDetail.id}>
-        {filmDetail.poster_path && (
+        {
           <img
             width={250}
-            src={`https://image.tmdb.org/t/p/w500/${filmDetail.poster_path}`}
+            src={
+              filmDetail.original_title === 'No information'
+                ? iconNmae
+                : `https://image.tmdb.org/t/p/w500/${filmDetail.poster_path}`
+            }
             alt={filmDetail.original_title}
           />
-        )}
+        }
 
         <div style={{ marginLeft: 20 }} key="title">
           <h1>{filmDetail.original_title}</h1>
@@ -51,21 +66,13 @@ const FilmDetails = () => {
           <h2>Overview</h2>
           <p key={2}>{filmDetail.overview}</p>
           <h2>Genres</h2>
-          <div style={{ display: 'flex', marginRight: 20 }} key="genres">
-            {genres && genres.map(el => <p>{el.name}</p>)}
+          <div className={s.Genres} key="genres">
+            {genres && genres.map((el, index) => <p key={index}>{el.name}</p>)}
           </div>
         </div>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: 100,
-          justifyContent: 'center',
-          border: 2,
-        }}
-      >
+      <div className={s.CastRevievs}>
         <NavLink
           to="cast"
           key="cast"
@@ -86,9 +93,8 @@ const FilmDetails = () => {
           Reviews
         </NavLink>
         <hr />
+        <Outlet />
       </div>
-
-      <Outlet />
     </Container>
   );
 };
