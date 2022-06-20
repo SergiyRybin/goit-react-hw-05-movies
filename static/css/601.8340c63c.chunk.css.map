@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/601.8340c63c.chunk.css","mappings":"AAAA,iCACE,eACF,CACA,4BACE,YAEF,CACA,8BACI,iBAAkB,CAClB,YACJ","sources":["pages/FilmDetails/FilmDetails.module.css"],"sourcesContent":[".CastRevievs {\n  margin-top: 20px;\n}\n.Genres {\n  display: flex;\n \n}\n.Genres p{\n    margin-right: 20px;\n    margin-top: 0;\n}\n"],"names":[],"sourceRoot":""}
