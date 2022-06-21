@@ -14,7 +14,7 @@ const FilmCard = ({ film }) => {
             ? `https://image.tmdb.org/t/p/w500/${film.poster_path}`
             : iconNmae
         }
-        alt=""
+        alt={film.title ? film.title : film.name}
         className={s.ImageItem}
       />
       {film.title ? film.title : film.name}
