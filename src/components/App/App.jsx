@@ -2,13 +2,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import React from 'react';
 import Container from 'components/Container/Container';
 import NavBar from 'components/NavigationBar/NavBar';
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import { ToastContainer } from 'react-toastify';
 import { lazy, Suspense } from 'react';
@@ -25,26 +19,24 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter basename='/goit-react-hw-05-movies/'>
-        <Suspense fallback={<Loader />}>
-          <Container>
-            <NavBar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route
-                path="/movies"
-                element={location.search ? <MovieSearch /> : <MoviesBar />}
-              />
-              <Route path="/movies/:id" element={<FilmDetails />}>
-                <Route path="cast" element={<Cast />} />
-                <Route path="reviews" element={<Reviews />} />
-              </Route>
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-          </Container>
-          <ToastContainer />
-        </Suspense>
-      </BrowserRouter>
+      <Suspense fallback={<Loader />}>
+        <Container>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/movies"
+              element={location.search ? <MovieSearch /> : <MoviesBar />}
+            />
+            <Route path="/movies/:id" element={<FilmDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Container>
+        <ToastContainer />
+      </Suspense>
     </>
   );
 };
