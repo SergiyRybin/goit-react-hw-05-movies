@@ -1,13 +1,11 @@
 import s from '../FilmCard/FilmCard.module.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import iconNmae from 'images/2.jpeg';
 
-const FilmCard = ({ film }) => {
-  const location = useLocation();
-
+const FilmCard = ({ film, state }) => {
   return (
-    <Link to={`/movies/${film.id}`} state={location.search}>
+    <Link to={`/movies/${film.id}`} state={state}>
       <img
         src={
           film.poster_path
@@ -24,6 +22,7 @@ const FilmCard = ({ film }) => {
 
 FilmCard.propTypes = {
   film: PropTypes.object.isRequired,
+  state: PropTypes.string,
 };
 
 export default FilmCard;

@@ -7,11 +7,20 @@ import iconNmae from 'images/1.jpeg';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 
 const FilmDetails = () => {
-  const loc = useLocation();
+  const location = useLocation();
 
   const [filmDetail, setFilmDetail] = useState([]);
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    if (location.state) {
+      setQuery(location.state);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const id = useParams();
 
@@ -41,7 +50,7 @@ const FilmDetails = () => {
 
   return (
     <Container>
-      <NavLink to={`/movies${loc.state}`}>
+      <NavLink to={!query ? '/' : `/movies${query}`}>
         <button style={{ marginBottom: 10 }}>Go back</button>
       </NavLink>
       <div style={{ display: 'flex' }} key={filmDetail.id}>

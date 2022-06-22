@@ -1,4 +1,4 @@
-import  {fetchQuery}  from 'servises/fetchRequaest';
+import { fetchQuery } from 'servises/fetchRequaest';
 import { useState, useEffect } from 'react';
 import FilmList from '../../components/FilmList/FilmList';
 import Container from 'components/Container/Container';
